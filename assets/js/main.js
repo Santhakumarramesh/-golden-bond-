@@ -261,11 +261,17 @@ const sampleProfiles = [
 function initFeaturedProfiles() {
   const featuredGrid = document.getElementById('featuredProfiles');
   
-  if (featuredGrid) {
-    // Show first 6 profiles
-    const featured = sampleProfiles.slice(0, 6);
-    featuredGrid.innerHTML = featured.map(profile => createProfileCard(profile)).join('');
+  if (!featuredGrid) return;
+  
+  // Try to load from search-profiles.js (which loads from localStorage)
+  if (window.loadProfiles) {
+    // Profiles will be loaded by search-profiles.js
+    return;
   }
+  
+  // Fallback: Use sample profiles
+  const featured = sampleProfiles.slice(0, 6);
+  featuredGrid.innerHTML = featured.map(profile => createProfileCard(profile)).join('');
 }
 
 /**
