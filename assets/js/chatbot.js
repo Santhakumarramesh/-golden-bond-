@@ -68,11 +68,27 @@ class LiveChat {
           "You can specify your marital status during profile creation. We have specific filters to help you find compatible matches who understand your situation."
         ]
       },
+      "compatibility": {
+        keywords: ["compatibility", "match", "ai", "algorithm", "score", "compatible", "suitable"],
+        answers: [
+          "Our AI compatibility algorithm analyzes multiple factors including religion, community, education, location, lifestyle preferences, and values to calculate match scores. Higher scores indicate better compatibility.",
+          "Compatibility scores range from 0-100% and are based on: shared values (30%), location & background (20%), education & profession (15%), lifestyle match (15%), religion & community (10%), and language overlap (10%).",
+          "Yes! Our AI-powered matching system uses machine learning to learn from successful matches and improve recommendations over time. You can ask me about compatibility with specific profiles."
+        ]
+      },
+      "ai_match": {
+        keywords: ["ai matching", "smart match", "recommendation", "suggestions", "ai bot"],
+        answers: [
+          "Our AI matching system analyzes your profile and preferences to suggest compatible matches. It considers factors like religion, community, education, location, lifestyle, and values.",
+          "To get AI-powered match recommendations, complete your profile with all details. The more information you provide, the better our AI can find compatible matches for you.",
+          "The AI chatbot can help you find matches! Just ask: 'Show me compatible profiles in Mumbai' or 'Find Hindu matches aged 25-30' and I'll help you search."
+        ]
+      },
       "default": {
         keywords: [],
         answers: [
-          "I'm here to help! Please ask me about signup, membership, search, verification, payments, or privacy. You can also contact our support team at support@goldenbond.com or +91-9876543210.",
-          "How can I assist you today? I can help with account creation, membership plans, searching profiles, or answer questions about our services."
+          "I'm here to help! I can assist with signup, membership, search, compatibility scores, AI matching, verification, payments, or privacy. You can also contact our support team at support@goldenbond.com or +91-9876543210.",
+          "How can I assist you today? I can help with account creation, membership plans, searching profiles, AI compatibility matching, or answer questions about our services. Ask me anything!"
         ]
       }
     };
@@ -101,15 +117,16 @@ class LiveChat {
             <div class="chat-message bot-message">
               <div class="message-content">
                 <p>👋 Hello! I'm here to help you with any questions about Golden Bond.</p>
-                <p>Ask me about:</p>
-                <ul class="quick-options">
-                  <li>📝 Signing up</li>
-                  <li>💎 Membership plans</li>
-                  <li>🔍 Searching profiles</li>
-                  <li>✓ Verification process</li>
-                  <li>💳 Payments</li>
-                  <li>🔒 Privacy & Security</li>
-                </ul>
+            <p>Ask me about:</p>
+            <ul class="quick-options">
+              <li>📝 Signing up</li>
+              <li>💎 Membership plans</li>
+              <li>🔍 Searching profiles</li>
+              <li>🤖 AI Compatibility</li>
+              <li>✓ Verification process</li>
+              <li>💳 Payments</li>
+              <li>🔒 Privacy & Security</li>
+            </ul>
               </div>
               <span class="message-time">Just now</span>
             </div>

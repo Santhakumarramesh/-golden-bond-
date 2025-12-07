@@ -8,6 +8,10 @@ let mobileVerified = false;
 let emailOTP = '';
 let mobileOTP = '';
 
+// Make variables globally accessible for signup.js
+window.emailVerified = () => emailVerified;
+window.mobileVerified = () => mobileVerified;
+
 // Load country codes
 async function loadCountryCodes() {
   try {

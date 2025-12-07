@@ -3,13 +3,29 @@
  * Fixes sizing and layout issues
  */
 
-/* Main signup container */
-.auth-section {
+/* Main signup/login container - Centered */
+.auth-section,
+.auth-page {
   padding: calc(70px + var(--space-3xl)) var(--space-lg) var(--space-4xl);
   min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 500px;
 }
 
 .auth-container {

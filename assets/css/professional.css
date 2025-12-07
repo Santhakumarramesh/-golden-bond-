@@ -321,7 +321,8 @@
   margin-top: var(--space-md);
 }
 
-.social-links a {
+.social-links a,
+.social-icon-link {
   width: 36px;
   height: 36px;
   display: flex;
@@ -333,14 +334,20 @@
   color: var(--text-secondary);
   transition: all 0.3s ease;
   text-decoration: none;
-  font-weight: 600;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-icon-link:hover {
   background: var(--accent-primary);
   color: white;
   border-color: var(--accent-primary);
   transform: translateY(-3px);
+}
+
+.social-links a svg,
+.social-icon-link svg {
+  width: 20px;
+  height: 20px;
 }
 
 .footer-links h4 {

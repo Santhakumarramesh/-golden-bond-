@@ -553,6 +553,41 @@ async function submitForm() {
       // Store demo user
       localStorage.setItem('gb_demo_user', JSON.stringify(data));
       
+      // Save profile to profiles list for browsing
+      const emailVerified = window.emailVerified ? window.emailVerified() : false;
+      const mobileVerified = window.mobileVerified ? window.mobileVerified() : false;
+      
+      if (window.saveProfileFromSignup) {
+        const profileData = {
+          firstName: data.firstName,
+          middleName: data.middleName || '',
+          lastName: data.lastName,
+          name: `${data.firstName} ${data.middleName || ''} ${data.lastName}`.trim(),
+          gender: data.gender,
+          dob: data.dob,
+          age: calculateAgeFromDOB(data.dob),
+          email: data.email,
+          phone: data.phone,
+          countryCode: data.countryCode,
+          religion: data.religion,
+          community: data.community || '',
+          location: {
+            country: data.country || '',
+            state: data.state || '',
+            city: data.city || ''
+          },
+          education: data.education,
+          profession: data.profession,
+          maritalStatus: data.maritalStatus,
+          motherTongue: data.motherTongue || '',
+          languagesKnown: data.languagesKnown || [],
+          avatar: data.gender === 'female' ? '👰' : '🤵',
+          verified: emailVerified && mobileVerified // Set verified if both verifications completed
+        };
+        
+        window.saveProfileFromSignup(profileData);
+      }
+      
       // Show success
       showSuccessMessage();
     }
@@ -578,6 +613,18 @@ async function checkBackendAvailable() {
   }
 }
 
+function calculateAgeFromDOB(dob) {
+  if (!dob) return null;
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 function showSuccessMessage() {
   const formContainer = form.parentElement;
   
@@ -586,7 +633,7 @@ function showSuccessMessage() {
       <div class="success-icon">🎉</div>
       <h2>Welcome to Golden Bond!</h2>
       <p>Your account has been created successfully.</p>
-      <p>In the full version, you would receive a verification email.</p>
+      <p>Your profile is now visible to other members!</p>
       <div class="success-actions">
         <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
         <a href="search.html" class="btn btn-secondary">Browse Profiles</a>
