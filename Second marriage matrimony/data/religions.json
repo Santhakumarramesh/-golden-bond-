@@ -1,0 +1,537 @@
+{
+  "religions": [
+    {
+      "id": "hinduism",
+      "name": "Hinduism",
+      "communities": [
+        {
+          "category": "North India",
+          "groups": [
+            "Brahmin - General",
+            "Brahmin - Gaur",
+            "Brahmin - Saraswat",
+            "Brahmin - Kanyakubj",
+            "Brahmin - Maithil",
+            "Rajput - General",
+            "Rajput - Chauhan",
+            "Rajput - Sisodia",
+            "Rajput - Rathore",
+            "Jat",
+            "Yadav",
+            "Khatri",
+            "Baniya - General",
+            "Baniya - Agarwal",
+            "Baniya - Gupta",
+            "Baniya - Maheshwari",
+            "Kurmi",
+            "Lodhi",
+            "Gurjar",
+            "Kayastha",
+            "Tyagi",
+            "Saini",
+            "Ahir"
+          ]
+        },
+        {
+          "category": "South India - Tamil Nadu",
+          "groups": [
+            "Brahmin - Iyer",
+            "Brahmin - Iyengar",
+            "Mudaliyar",
+            "Chettiar",
+            "Gounder",
+            "Nadar",
+            "Pillai",
+            "Vanniyar",
+            "Naicker",
+            "Thevar",
+            "Kallar",
+            "Maravar",
+            "Vishwakarma"
+          ]
+        },
+        {
+          "category": "South India - Telugu",
+          "groups": [
+            "Brahmin - Niyogi",
+            "Brahmin - Vaidiki",
+            "Reddy",
+            "Kamma",
+            "Kapu",
+            "Balija",
+            "Velama",
+            "Naidu",
+            "Kshatriya",
+            "Vysya",
+            "Padmashali"
+          ]
+        },
+        {
+          "category": "South India - Karnataka",
+          "groups": [
+            "Lingayat",
+            "Vokkaliga",
+            "Kuruba",
+            "Gowda",
+            "Brahmin - Madhwa",
+            "Brahmin - Smartha",
+            "Bunt",
+            "Billava",
+            "Devanga"
+          ]
+        },
+        {
+          "category": "South India - Kerala",
+          "groups": [
+            "Nair",
+            "Ezhava",
+            "Namboothiri",
+            "Menon",
+            "Thiyya",
+            "Nambiar",
+            "Pillai",
+            "Kurup",
+            "Warrier",
+            "Vishwakarma"
+          ]
+        },
+        {
+          "category": "West India",
+          "groups": [
+            "Maratha",
+            "Brahmin - Deshastha",
+            "Brahmin - Kokanastha",
+            "Brahmin - Karhade",
+            "Konkani",
+            "Bhandari",
+            "Koli",
+            "Patel - Leuva",
+            "Patel - Kadva",
+            "Lohana",
+            "Gujarati Vaishya",
+            "Gujarati Brahmin",
+            "Sindhi",
+            "Kutchi"
+          ]
+        },
+        {
+          "category": "East India",
+          "groups": [
+            "Bengali Brahmin",
+            "Baidya",
+            "Kayastha",
+            "Mahishya",
+            "Namasudra",
+            "Assamese Brahmin",
+            "Assamese Kalita",
+            "Odia Brahmin",
+            "Odia Karana",
+            "Odia Khandayat"
+          ]
+        },
+        {
+          "category": "Tribal Communities",
+          "groups": [
+            "Gond",
+            "Bhil",
+            "Santhal",
+            "Munda",
+            "Khasi",
+            "Garo",
+            "Naga",
+            "Mizo",
+            "Bodo",
+            "Adivasi - General"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "islam",
+      "name": "Islam",
+      "communities": [
+        {
+          "category": "Major Sects",
+          "groups": [
+            "Sunni",
+            "Shia",
+            "Ahmadiyya",
+            "Ibadi",
+            "Sufi"
+          ]
+        },
+        {
+          "category": "South Asian Communities",
+          "groups": [
+            "Syed",
+            "Pathan (Pashtun)",
+            "Sheikh",
+            "Mughal",
+            "Ansari",
+            "Memon",
+            "Bohra - Dawoodi",
+            "Bohra - Alvi",
+            "Qureshi",
+            "Khan",
+            "Malik",
+            "Rajput Muslim"
+          ]
+        },
+        {
+          "category": "Middle Eastern Communities",
+          "groups": [
+            "Arab - Gulf",
+            "Arab - Levant",
+            "Arab - Egyptian",
+            "Persian",
+            "Kurdish",
+            "Turkish",
+            "Yemeni",
+            "Omani",
+            "Emirati"
+          ]
+        },
+        {
+          "category": "African Communities",
+          "groups": [
+            "Hausa",
+            "Somali",
+            "Berber",
+            "Fulani",
+            "Swahili"
+          ]
+        },
+        {
+          "category": "Southeast Asian Communities",
+          "groups": [
+            "Malay",
+            "Indonesian",
+            "Javanese",
+            "Minangkabau"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "christianity",
+      "name": "Christianity",
+      "communities": [
+        {
+          "category": "Catholic",
+          "groups": [
+            "Roman Catholic",
+            "Latin Catholic",
+            "Syro-Malabar Catholic",
+            "Syro-Malankara Catholic",
+            "Chaldean Catholic",
+            "Maronite Catholic"
+          ]
+        },
+        {
+          "category": "Protestant",
+          "groups": [
+            "Protestant - General",
+            "Baptist",
+            "Methodist",
+            "Presbyterian",
+            "Lutheran",
+            "Pentecostal",
+            "Evangelical",
+            "Seventh-day Adventist",
+            "Church of Christ"
+          ]
+        },
+        {
+          "category": "Orthodox",
+          "groups": [
+            "Eastern Orthodox",
+            "Greek Orthodox",
+            "Russian Orthodox",
+            "Coptic Orthodox",
+            "Ethiopian Orthodox",
+            "Armenian Orthodox",
+            "Malankara Orthodox"
+          ]
+        },
+        {
+          "category": "Anglican & Others",
+          "groups": [
+            "Anglican",
+            "Church of England",
+            "Episcopal",
+            "Church of South India (CSI)",
+            "Church of North India (CNI)"
+          ]
+        },
+        {
+          "category": "Indian Syrian Christian",
+          "groups": [
+            "Jacobite Syrian",
+            "Marthoma",
+            "Knanaya",
+            "Syrian Catholic"
+          ]
+        },
+        {
+          "category": "Other Denominations",
+          "groups": [
+            "Jehovah's Witness",
+            "Mormon (LDS)",
+            "Quaker",
+            "Mennonite",
+            "Salvation Army"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sikhism",
+      "name": "Sikhism",
+      "communities": [
+        {
+          "category": "Sikh Communities",
+          "groups": [
+            "Jat Sikh",
+            "Ramgarhia",
+            "Khatri Sikh",
+            "Arora Sikh",
+            "Ahluwalia",
+            "Saini Sikh",
+            "Lubana",
+            "Mazhabi Sikh",
+            "Ravidassia",
+            "Bhatia Sikh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buddhism",
+      "name": "Buddhism",
+      "communities": [
+        {
+          "category": "Buddhist Traditions",
+          "groups": [
+            "Theravada",
+            "Mahayana",
+            "Vajrayana (Tibetan)",
+            "Zen",
+            "Nichiren",
+            "Pure Land",
+            "Neo-Buddhist (Ambedkarite)"
+          ]
+        },
+        {
+          "category": "Regional Buddhist",
+          "groups": [
+            "Sri Lankan Buddhist",
+            "Thai Buddhist",
+            "Burmese Buddhist",
+            "Tibetan Buddhist",
+            "Chinese Buddhist",
+            "Japanese Buddhist",
+            "Korean Buddhist",
+            "Vietnamese Buddhist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jainism",
+      "name": "Jainism",
+      "communities": [
+        {
+          "category": "Jain Traditions",
+          "groups": [
+            "Digambar",
+            "Shwetambar",
+            "Sthanakwasi",
+            "Terapanthi"
+          ]
+        },
+        {
+          "category": "Jain Communities",
+          "groups": [
+            "Oswal",
+            "Porwal",
+            "Agrawal Jain",
+            "Khandelwal Jain",
+            "Parwar Jain",
+            "Sarawagi",
+            "Humad"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "judaism",
+      "name": "Judaism",
+      "communities": [
+        {
+          "category": "Jewish Communities",
+          "groups": [
+            "Ashkenazi",
+            "Sephardic",
+            "Mizrahi",
+            "Yemenite",
+            "Ethiopian (Beta Israel)",
+            "Indian Jewish (Bene Israel)",
+            "Cochin Jews"
+          ]
+        },
+        {
+          "category": "Jewish Denominations",
+          "groups": [
+            "Orthodox",
+            "Conservative",
+            "Reform",
+            "Reconstructionist",
+            "Hasidic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zoroastrianism",
+      "name": "Zoroastrianism",
+      "communities": [
+        {
+          "category": "Zoroastrian Communities",
+          "groups": [
+            "Parsi",
+            "Irani"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shinto",
+      "name": "Shinto",
+      "communities": [
+        {
+          "category": "Shinto",
+          "groups": [
+            "Shinto - General"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "taoism",
+      "name": "Taoism / Daoism",
+      "communities": [
+        {
+          "category": "Taoist Traditions",
+          "groups": [
+            "Taoist - General",
+            "Quanzhen",
+            "Zhengyi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "confucianism",
+      "name": "Confucianism",
+      "communities": [
+        {
+          "category": "Confucian",
+          "groups": [
+            "Confucian - General"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bahai",
+      "name": "Baháʼí Faith",
+      "communities": [
+        {
+          "category": "Baháʼí",
+          "groups": [
+            "Baháʼí - General"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indigenous",
+      "name": "Indigenous / Tribal Religions",
+      "communities": [
+        {
+          "category": "African Traditional",
+          "groups": [
+            "Yoruba Traditional",
+            "Akan Traditional",
+            "Zulu Traditional",
+            "Maasai Traditional"
+          ]
+        },
+        {
+          "category": "Native American",
+          "groups": [
+            "Native American - General",
+            "Navajo",
+            "Cherokee",
+            "Lakota"
+          ]
+        },
+        {
+          "category": "Pacific & Oceanian",
+          "groups": [
+            "Maori",
+            "Aboriginal Australian",
+            "Pacific Islander"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spiritual",
+      "name": "Spiritual but not religious",
+      "communities": [
+        {
+          "category": "Spiritual",
+          "groups": [
+            "Spiritual - General",
+            "New Age",
+            "Universalist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atheist",
+      "name": "Atheist / Agnostic / No Religion",
+      "communities": [
+        {
+          "category": "Non-Religious",
+          "groups": [
+            "Atheist",
+            "Agnostic",
+            "Humanist",
+            "No Religion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Other Religion",
+      "communities": [
+        {
+          "category": "Other",
+          "groups": [
+            "Other - Please Specify"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-12-07",
+    "disclaimer": "All community filters are provided for user preference only. No group is ranked above another. Golden Bond promotes respect and equality for all communities."
+  }
+}
+

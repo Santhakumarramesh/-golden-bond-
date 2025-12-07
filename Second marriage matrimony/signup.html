@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up - Golden Bond</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Create your free account on Golden Bond and start your journey to finding love." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Additional styles for multi-step form */
+    .form-steps {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .step-indicator.active .step-number {
+      background: var(--gradient-accent);
+      color: var(--text-inverse);
+    }
+    .step-indicator.completed .step-number {
+      background: #22c55e;
+      color: white;
+    }
+    .step-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .step-label { display: block; }
+    }
+    .step-connector {
+      width: 40px;
+      height: 2px;
+      background: var(--border-color);
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-nav {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+    .form-nav .btn { flex: 1; }
+    .community-group {
+      margin-bottom: var(--space-md);
+    }
+    .community-group-title {
+      font-size: 0.8rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-sm);
+    }
+    .disclaimer-box {
+      background: var(--bg-tertiary);
+      border-left: 3px solid var(--accent-secondary);
+      padding: var(--space-md);
+      margin: var(--space-lg) 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+    }
+    .language-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+    }
+    .language-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 0.25rem 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .language-chip .remove-lang {
+      cursor: pointer;
+      color: var(--accent-primary);
+      font-weight: bold;
+    }
+    .auth-card {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body class="theme-indian">
+  <!-- Floating decorative elements -->
+  <div class="floating-decor">
+    <span class="decor-circle"></span>
+    <span class="decor-circle"></span>
+    <span class="decor-circle"></span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">💍</span>
+        <span class="logo-text">Golden<span class="logo-accent">Bond</span></span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+        <a href="search.html" class="nav-link" data-i18n="nav_search">Search</a>
+        <a href="signup.html" class="nav-link active" data-i18n="nav_signup">Sign Up</a>
+        <a href="login.html" class="nav-link" data-i18n="nav_login">Login</a>
+      </nav>
+      <div class="header-controls">
+        <select id="languageSelect" class="control-select" aria-label="Select Language">
+          <option value="en">🇬🇧 English</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="ta">🇮🇳 தமிழ்</option>
+          <option value="ar">🇸🇦 العربية</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+        <select id="themeSelect" class="control-select" aria-label="Select Theme">
+          <option value="theme-indian">🔴 Indian Red & Gold</option>
+          <option value="theme-classic">🟡 Classic White & Gold</option>
+          <option value="theme-modern">🌸 Modern Pastel</option>
+          <option value="theme-dark">🌙 Dark Mode</option>
+        </select>
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+    <a href="search.html" class="nav-link" data-i18n="nav_search">Search</a>
+    <a href="signup.html" class="nav-link active" data-i18n="nav_signup">Sign Up</a>
+    <a href="login.html" class="nav-link" data-i18n="nav_login">Login</a>
+  </div>
+
+  <!-- Signup Page -->
+  <main class="auth-page">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">💍</span>
+            <span class="logo-text">Golden<span class="logo-accent">Bond</span></span>
+          </a>
+          <h1 class="auth-title" data-i18n="signup_title">Create Account</h1>
+          <p class="auth-subtitle" data-i18n="signup_subtitle">Start your journey to finding love</p>
+        </div>
+
+        <!-- Step Indicators -->
+        <div class="form-steps">
+          <div class="step-indicator active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Basic Info</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-indicator" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Religion & Community</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-indicator" data-step="3">
+            <span class="step-number">3</span>
+            <span class="step-label">Location & Languages</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-indicator" data-step="4">
+            <span class="step-number">4</span>
+            <span class="step-label">Account</span>
+          </div>
+        </div>
+
+        <form id="signupForm" class="auth-form">
+          
+          <!-- Step 1: Basic Information -->
+          <div class="form-step active" data-step="1">
+            <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">👤 Basic Information</h3>
+            
+            <!-- Full Name -->
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" name="fullName" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" name="phone" class="form-control" placeholder="Enter phone number" required>
+            </div>
+
+            <!-- Gender & DOB -->
+            <div class="form-row-inline">
+              <div class="form-group">
+                <label>Gender *</label>
+                <select name="gender" class="form-control" required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Date of Birth *</label>
+                <input type="date" name="dob" class="form-control" required>
+              </div>
+            </div>
+
+            <!-- Marital Status -->
+            <div class="form-group">
+              <label>Marital Status *</label>
+              <select name="maritalStatus" class="form-control" required>
+                <option value="">Select Status</option>
+                <option value="never_married">Never Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+                <option value="separated">Separated</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Religion & Community →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Religion & Community -->
+          <div class="form-step" data-step="2">
+            <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">🙏 Religion & Community</h3>
+            
+            <div class="disclaimer-box">
+              <strong>📌 Note:</strong> All community filters are provided for user preference only. No group is ranked above another. Golden Bond promotes respect and equality for all communities.
+            </div>
+
+            <!-- Religion -->
+            <div class="form-group">
+              <label>Religion *</label>
+              <select name="religion" id="religionSelect" class="form-control" required onchange="loadCommunities()">
+                <option value="">Select Religion</option>
+                <option value="hinduism">Hinduism</option>
+                <option value="islam">Islam</option>
+                <option value="christianity">Christianity</option>
+                <option value="sikhism">Sikhism</option>
+                <option value="buddhism">Buddhism</option>
+                <option value="jainism">Jainism</option>
+                <option value="judaism">Judaism</option>
+                <option value="zoroastrianism">Zoroastrianism (Parsi)</option>
+                <option value="shinto">Shinto</option>
+                <option value="taoism">Taoism / Daoism</option>
+                <option value="confucianism">Confucianism</option>
+                <option value="bahai">Baháʼí Faith</option>
+                <option value="indigenous">Indigenous / Tribal Religions</option>
+                <option value="spiritual">Spiritual but not religious</option>
+                <option value="atheist">Atheist / Agnostic / No Religion</option>
+                <option value="other">Other Religion</option>
+              </select>
+            </div>
+
+            <!-- Community (Dynamic based on religion) -->
+            <div class="form-group">
+              <label>Community / Denomination</label>
+              <select name="community" id="communitySelect" class="form-control">
+                <option value="">Select Religion First</option>
+              </select>
+            </div>
+
+            <!-- Sub-community (optional) -->
+            <div class="form-group">
+              <label>Sub-community / Caste (Optional)</label>
+              <input type="text" name="subcommunity" class="form-control" placeholder="Enter if applicable (optional)">
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Location →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Location & Languages -->
+          <div class="form-step" data-step="3">
+            <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">🌍 Location & Languages</h3>
+            
+            <!-- Country -->
+            <div class="form-group">
+              <label>Country *</label>
+              <select name="country" id="countrySelect" class="form-control" required onchange="loadStates()">
+                <option value="">Select Country</option>
+                <!-- Will be populated by JS -->
+              </select>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+              <label>State / Province</label>
+              <select name="state" id="stateSelect" class="form-control">
+                <option value="">Select Country First</option>
+              </select>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" name="city" class="form-control" placeholder="Enter your city" required>
+            </div>
+
+            <!-- Mother Tongue -->
+            <div class="form-group">
+              <label>Mother Tongue *</label>
+              <select name="motherTongue" id="motherTongueSelect" class="form-control" required>
+                <option value="">Select Mother Tongue</option>
+                <!-- Will be populated by JS -->
+              </select>
+            </div>
+
+            <!-- Languages Known (Multiple) -->
+            <div class="form-group">
+              <label>Other Languages Known</label>
+              <select id="languagesKnownSelect" class="form-control" onchange="addLanguage()">
+                <option value="">Add languages you speak</option>
+                <!-- Will be populated by JS -->
+              </select>
+              <div class="language-chips" id="selectedLanguages">
+                <!-- Selected languages will appear here -->
+              </div>
+              <input type="hidden" name="languagesKnown" id="languagesKnownInput">
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextStep(4)">Next: Account →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Account Setup -->
+          <div class="form-step" data-step="4">
+            <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">🔐 Account Setup</h3>
+            
+            <!-- Education -->
+            <div class="form-group">
+              <label>Education *</label>
+              <select name="education" class="form-control" required>
+                <option value="">Select Education</option>
+                <option value="high_school">High School</option>
+                <option value="diploma">Diploma</option>
+                <option value="bachelors">Bachelor's Degree</option>
+                <option value="masters">Master's Degree</option>
+                <option value="doctorate">Doctorate / PhD</option>
+                <option value="professional">Professional Degree (MD, JD, etc.)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Profession -->
+            <div class="form-group">
+              <label>Profession *</label>
+              <select name="profession" class="form-control" required>
+                <option value="">Select Profession</option>
+                <option value="software">Software / IT Professional</option>
+                <option value="doctor">Doctor / Medical Professional</option>
+                <option value="engineer">Engineer</option>
+                <option value="teacher">Teacher / Professor</option>
+                <option value="business">Business Owner</option>
+                <option value="government">Government Employee</option>
+                <option value="banking">Banking / Finance</option>
+                <option value="lawyer">Lawyer / Legal</option>
+                <option value="architect">Architect / Designer</option>
+                <option value="scientist">Scientist / Researcher</option>
+                <option value="artist">Artist / Creative</option>
+                <option value="homemaker">Homemaker</option>
+                <option value="student">Student</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label>Password *</label>
+              <input type="password" name="password" class="form-control" placeholder="Create a strong password" minlength="8" required>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <label>Confirm Password *</label>
+              <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm your password" minlength="8" required>
+            </div>
+
+            <!-- Terms Agreement -->
+            <div class="form-group">
+              <label class="remember-me">
+                <input type="checkbox" name="agreeTerms" required>
+                <span>I agree to the <a href="#" style="color: var(--accent-primary);">Terms of Service</a> and <a href="#" style="color: var(--accent-primary);">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+              <button type="submit" class="btn btn-primary">Create Account ✓</button>
+            </div>
+          </div>
+
+        </form>
+
+        <div class="auth-divider">
+          <span data-i18n="or_continue_with">or continue with</span>
+        </div>
+
+        <div class="social-auth">
+          <button class="social-btn">
+            <span>📧</span> Google
+          </button>
+          <button class="social-btn">
+            <span>📘</span> Facebook
+          </button>
+        </div>
+
+        <p class="auth-footer">
+          <span data-i18n="have_account">Already have an account?</span>
+          <a href="login.html" data-i18n="sign_in">Sign In</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/themes.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/signup-data.js"></script>
+</body>
+</html>
