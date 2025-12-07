@@ -22,8 +22,26 @@ build/
 
 # OS
 .DS_Store
+**/.DS_Store
 Thumbs.db
 desktop.ini
+
+# Documentation (keep only README.md)
+DEPLOYMENT_GUIDE.md
+DESIGN_IMPROVEMENTS.md
+EMOJI_UPDATES.md
+GITHUB_DEPLOY.md
+PRODUCTION_READY.md
+PROFESSIONAL_UPGRADE.md
+SECURITY_SUMMARY.md
+SECURITY.md
+UI_IMPROVEMENTS_SUMMARY.md
+DATA_EXPANSION_SUMMARY.md
+deploy-to-github.sh
+
+# Duplicate directories
+Second marriage matrimony/
+Readme/
 
 # Logs
 *.log
