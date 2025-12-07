@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Golden Bond | Your Marriage Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Profile Page Styles */
+    .profile-page {
+      padding: calc(70px + var(--space-xl)) 0 var(--space-4xl);
+      min-height: 100vh;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: var(--space-2xl);
+    }
+
+    /* Profile Sidebar */
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .profile-photo-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      text-align: center;
+    }
+
+    .profile-photo-main {
+      width: 200px;
+      height: 200px;
+      background: var(--bg-tertiary);
+      border-radius: 50%;
+      margin: 0 auto var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .photo-edit-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background: var(--accent-primary);
+      color: white;
+      border: 3px solid var(--bg-card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .profile-name-section h1 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .profile-id {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Verification Badges */
+    .verification-badges {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+    }
+
+    .v-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .v-badge.verified {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .v-badge.pending {
+      background: rgba(234, 179, 8, 0.1);
+      color: #eab308;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+    }
+
+    .v-badge.unverified {
+      background: var(--bg-tertiary);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Trust Score */
+    .trust-score-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+    }
+
+    .trust-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+
+    .trust-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    .trust-score-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+
+    .trust-bar {
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+    }
+
+    .trust-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ef4444 0%, #eab308 50%, #22c55e 100%);
+      border-radius: var(--radius-full);
+      transition: width 0.5s ease;
+    }
+
+    .trust-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .trust-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .trust-item-label {
+      color: var(--text-secondary);
+    }
+
+    .trust-item-status {
+      font-weight: 500;
+    }
+
+    .trust-item-status.done {
+      color: #22c55e;
+    }
+
+    .trust-item-status.pending {
+      color: #eab308;
+    }
+
+    .trust-item-status.missing {
+      color: var(--text-muted);
+    }
+
+    /* Quick Stats */
+    .quick-stats {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+    }
+
+    .quick-stats h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: var(--space-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+    }
+
+    .stat-item .value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+
+    .stat-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Profile Main Content */
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .profile-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text-primary);
+    }
+
+    .edit-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .edit-btn:hover {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Bio Section */
+    .bio-text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .tag {
+      padding: var(--space-xs) var(--space-md);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+    }
+
+    /* Photo Gallery */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item.add-photo {
+      border: 2px dashed var(--border-color);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .gallery-item.add-photo:hover {
+      border-color: var(--accent-primary);
+      background: rgba(196, 30, 58, 0.05);
+    }
+
+    .gallery-item .delete-photo {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 24px;
+      height: 24px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .gallery-item:hover .delete-photo {
+      display: flex;
+    }
+
+    /* Family Details */
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+    }
+
+    .family-member {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+
+    .family-member h4 {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .family-member p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Horoscope Section */
+    .horoscope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .horoscope-item {
+      text-align: center;
+      padding: var(--space-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+    }
+
+    .horoscope-item .icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .horoscope-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .horoscope-item .value {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Partner Preferences */
+    .preference-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .preference-item:last-child {
+      border-bottom: none;
+    }
+
+    .preference-label {
+      color: var(--text-secondary);
+    }
+
+    .preference-value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Verification Section */
+    .verification-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .verify-option {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .verify-option:hover {
+      border-color: var(--accent-primary);
+    }
+
+    .verify-option.completed {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.05);
+    }
+
+    .verify-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .verify-option h4 {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .verify-option p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+
+    .verify-status {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .verify-status.verified {
+      color: #22c55e;
+    }
+
+    .verify-status.pending {
+      color: #eab308;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-lg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="theme-indian">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">💍</span>
+          <span class="logo-text">Golden<span class="accent">Bond</span></span>
+        </a>
+        
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="messages.html">Messages</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+          <a href="membership.html" class="btn btn-primary btn-sm">👑 Premium</a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Profile Page -->
+  <main class="profile-page">
+    <div class="container">
+      <div class="profile-layout">
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+          <!-- Photo Section -->
+          <div class="profile-photo-section">
+            <div class="profile-photo-main">
+              👤
+              <button class="photo-edit-btn">📷</button>
+            </div>
+            <div class="profile-name-section">
+              <h1>Rahul Sharma</h1>
+              <p class="profile-id">GB-2024-78542</p>
+            </div>
+            
+            <!-- Verification Badges -->
+            <div class="verification-badges">
+              <span class="v-badge verified">✓ ID Verified</span>
+              <span class="v-badge verified">✓ Phone</span>
+              <span class="v-badge pending">⏳ Photo</span>
+              <span class="v-badge unverified">○ Video</span>
+            </div>
+            
+            <a href="membership.html" class="btn btn-primary" style="width: 100%;">👑 Upgrade to Premium</a>
+          </div>
+
+          <!-- Trust Score -->
+          <div class="trust-score-card">
+            <div class="trust-header">
+              <h3>🛡️ Trust Score</h3>
+              <span class="trust-score-value">75/100</span>
+            </div>
+            <div class="trust-bar">
+              <div class="trust-fill" style="width: 75%;"></div>
+            </div>
+            <div class="trust-items">
+              <div class="trust-item">
+                <span class="trust-item-label">Email Verified</span>
+                <span class="trust-item-status done">+10 ✓</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-item-label">Phone Verified</span>
+                <span class="trust-item-status done">+15 ✓</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-item-label">ID Verified</span>
+                <span class="trust-item-status done">+20 ✓</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-item-label">Photo Verified</span>
+                <span class="trust-item-status pending">+15 ⏳</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-item-label">Video Verified</span>
+                <span class="trust-item-status missing">+20 ○</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-item-label">Profile Complete</span>
+                <span class="trust-item-status done">+20 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="quick-stats">
+            <h3>📊 Profile Stats</h3>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="value">234</span>
+                <span class="label">Views</span>
+              </div>
+              <div class="stat-item">
+                <span class="value">47</span>
+                <span class="label">Interests</span>
+              </div>
+              <div class="stat-item">
+                <span class="value">12</span>
+                <span class="label">Matches</span>
+              </div>
+              <div class="stat-item">
+                <span class="value">89%</span>
+                <span class="label">Complete</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="profile-main">
+          <!-- About Me -->
+          <section class="profile-section" id="about">
+            <div class="section-header">
+              <h2>👤 About Me</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <p class="bio-text">
+              Hi! I'm Rahul, a software engineer based in Mumbai with a passion for music, travel, and good conversations. I believe in building meaningful connections based on mutual respect and shared values. 
+              <br><br>
+              I come from a traditional family but have a modern outlook on life. I enjoy weekends exploring new places, cooking experiments, and catching up on the latest tech trends. Looking for someone who shares similar interests and values family as much as I do.
+            </p>
+          </section>
+
+          <!-- Basic Information -->
+          <section class="profile-section" id="basic">
+            <div class="section-header">
+              <h2>📋 Basic Information</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Age</span>
+                <span class="info-value">30 years</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Height</span>
+                <span class="info-value">5'10" (178 cm)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Weight</span>
+                <span class="info-value">75 kg</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Marital Status</span>
+                <span class="info-value">Never Married</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Body Type</span>
+                <span class="info-value">Athletic</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Complexion</span>
+                <span class="info-value">Fair</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Physical Status</span>
+                <span class="info-value">Normal</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Blood Group</span>
+                <span class="info-value">O+</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Religion & Community -->
+          <section class="profile-section" id="religion">
+            <div class="section-header">
+              <h2>🙏 Religion & Community</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Religion</span>
+                <span class="info-value">Hindu</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Community</span>
+                <span class="info-value">Brahmin (Gaur)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Sub-community</span>
+                <span class="info-value">Kanyakubj</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Gotra</span>
+                <span class="info-value">Bharadwaj</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Location & Languages -->
+          <section class="profile-section" id="location">
+            <div class="section-header">
+              <h2>📍 Location & Languages</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Country</span>
+                <span class="info-value">India</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">State</span>
+                <span class="info-value">Maharashtra</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">City</span>
+                <span class="info-value">Mumbai</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Citizenship</span>
+                <span class="info-value">Indian</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Residency Status</span>
+                <span class="info-value">Permanent Resident</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Visa Status</span>
+                <span class="info-value">N/A</span>
+              </div>
+            </div>
+            <div style="margin-top: var(--space-lg);">
+              <span class="info-label" style="display: block; margin-bottom: var(--space-sm);">Languages Spoken</span>
+              <div class="tags-container">
+                <span class="tag">English (Fluent)</span>
+                <span class="tag">Hindi (Native)</span>
+                <span class="tag">Marathi (Conversational)</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Education & Career -->
+          <section class="profile-section" id="career">
+            <div class="section-header">
+              <h2>🎓 Education & Career</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Highest Education</span>
+                <span class="info-value">Master's (M.Tech)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">College/University</span>
+                <span class="info-value">IIT Bombay</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Profession</span>
+                <span class="info-value">Software Engineer</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Company</span>
+                <span class="info-value">Google India</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Annual Income</span>
+                <span class="info-value">₹40-50 Lakhs</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Working With</span>
+                <span class="info-value">Private Company</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Lifestyle -->
+          <section class="profile-section" id="lifestyle">
+            <div class="section-header">
+              <h2>🌟 Lifestyle</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Diet</span>
+                <span class="info-value">Vegetarian</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Smoking</span>
+                <span class="info-value">Non-smoker</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Drinking</span>
+                <span class="info-value">Occasionally</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Pets</span>
+                <span class="info-value">Have a dog</span>
+              </div>
+            </div>
+            <div style="margin-top: var(--space-lg);">
+              <span class="info-label" style="display: block; margin-bottom: var(--space-sm);">Interests & Hobbies</span>
+              <div class="tags-container">
+                <span class="tag">🎵 Music</span>
+                <span class="tag">✈️ Travel</span>
+                <span class="tag">📚 Reading</span>
+                <span class="tag">🏔️ Hiking</span>
+                <span class="tag">🎮 Gaming</span>
+                <span class="tag">🍳 Cooking</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Family Details -->
+          <section class="profile-section" id="family">
+            <div class="section-header">
+              <h2>👨‍👩‍👧‍👦 Family Details</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="info-grid" style="margin-bottom: var(--space-xl);">
+              <div class="info-item">
+                <span class="info-label">Family Type</span>
+                <span class="info-value">Nuclear Family</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Family Status</span>
+                <span class="info-value">Upper Middle Class</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Family Values</span>
+                <span class="info-value">Traditional</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Native Place</span>
+                <span class="info-value">Lucknow, UP</span>
+              </div>
+            </div>
+            <div class="family-grid">
+              <div class="family-member">
+                <h4>👨 Father</h4>
+                <p><strong>Name:</strong> Mr. Sharma</p>
+                <p><strong>Occupation:</strong> Retired Government Officer</p>
+              </div>
+              <div class="family-member">
+                <h4>👩 Mother</h4>
+                <p><strong>Name:</strong> Mrs. Sharma</p>
+                <p><strong>Occupation:</strong> Homemaker</p>
+              </div>
+              <div class="family-member">
+                <h4>👧 Siblings</h4>
+                <p><strong>Sister:</strong> 1 (Married)</p>
+                <p><strong>Brother:</strong> None</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Horoscope Details -->
+          <section class="profile-section" id="horoscope">
+            <div class="section-header">
+              <h2>⭐ Horoscope Details</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="horoscope-grid">
+              <div class="horoscope-item">
+                <span class="icon">♌</span>
+                <span class="label">Rashi</span>
+                <span class="value">Simha (Leo)</span>
+              </div>
+              <div class="horoscope-item">
+                <span class="icon">⭐</span>
+                <span class="label">Nakshatra</span>
+                <span class="value">Magha</span>
+              </div>
+              <div class="horoscope-item">
+                <span class="icon">🌙</span>
+                <span class="label">Manglik</span>
+                <span class="value">No</span>
+              </div>
+              <div class="horoscope-item">
+                <span class="icon">📅</span>
+                <span class="label">Birth Time</span>
+                <span class="value">10:30 AM</span>
+              </div>
+              <div class="horoscope-item">
+                <span class="icon">📍</span>
+                <span class="label">Birth Place</span>
+                <span class="value">Lucknow</span>
+              </div>
+              <div class="horoscope-item">
+                <span class="icon">📄</span>
+                <span class="label">Kundli</span>
+                <span class="value">Available</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Photo Gallery -->
+          <section class="profile-section" id="photos">
+            <div class="section-header">
+              <h2>📸 Photo Gallery</h2>
+              <button class="edit-btn">➕ Add Photos</button>
+            </div>
+            <div class="photo-gallery">
+              <div class="gallery-item">
+                👤
+                <button class="delete-photo">×</button>
+              </div>
+              <div class="gallery-item">
+                🏔️
+                <button class="delete-photo">×</button>
+              </div>
+              <div class="gallery-item">
+                🎸
+                <button class="delete-photo">×</button>
+              </div>
+              <div class="gallery-item add-photo">
+                ➕
+              </div>
+            </div>
+          </section>
+
+          <!-- Partner Preferences -->
+          <section class="profile-section" id="preferences">
+            <div class="section-header">
+              <h2>💝 Partner Preferences</h2>
+              <button class="edit-btn">✏️ Edit</button>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Age Range</span>
+              <span class="preference-value">24 - 30 years</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Height Range</span>
+              <span class="preference-value">5'2" - 5'8"</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Marital Status</span>
+              <span class="preference-value">Never Married, Divorced</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Religion</span>
+              <span class="preference-value">Hindu</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Community</span>
+              <span class="preference-value">Brahmin (Any)</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Education</span>
+              <span class="preference-value">Bachelor's or higher</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Profession</span>
+              <span class="preference-value">Any</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Location</span>
+              <span class="preference-value">India, USA, UK, Canada</span>
+            </div>
+            <div class="preference-item">
+              <span class="preference-label">Diet</span>
+              <span class="preference-value">Vegetarian preferred</span>
+            </div>
+          </section>
+
+          <!-- Verification Section -->
+          <section class="profile-section" id="verify">
+            <div class="section-header">
+              <h2>✅ Verification Center</h2>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-xl);">
+              Verified profiles get 3x more responses. Complete all verifications to build trust.
+            </p>
+            <div class="verification-options">
+              <div class="verify-option completed">
+                <span class="verify-icon">📧</span>
+                <h4>Email Verification</h4>
+                <p>Verify your email address</p>
+                <span class="verify-status verified">✓ Verified</span>
+              </div>
+              <div class="verify-option completed">
+                <span class="verify-icon">📱</span>
+                <h4>Phone Verification</h4>
+                <p>Verify your phone number via OTP</p>
+                <span class="verify-status verified">✓ Verified</span>
+              </div>
+              <div class="verify-option completed">
+                <span class="verify-icon">🪪</span>
+                <h4>ID Verification</h4>
+                <p>Upload government ID (Aadhaar, Passport)</p>
+                <span class="verify-status verified">✓ Verified</span>
+              </div>
+              <div class="verify-option">
+                <span class="verify-icon">📸</span>
+                <h4>Photo Verification</h4>
+                <p>Take a selfie to verify it's you</p>
+                <button class="btn btn-secondary btn-sm">Verify Now</button>
+              </div>
+              <div class="verify-option">
+                <span class="verify-icon">🎥</span>
+                <h4>Video Verification</h4>
+                <p>Record a short intro video</p>
+                <button class="btn btn-secondary btn-sm">Verify Now</button>
+              </div>
+              <div class="verify-option">
+                <span class="verify-icon">💼</span>
+                <h4>Income Verification</h4>
+                <p>Verify your income (optional)</p>
+                <button class="btn btn-secondary btn-sm">Verify Now</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">💍</span>
+            <span class="logo-text">Golden<span class="accent">Bond</span></span>
+          </a>
+          <p>Finding love across borders, cultures, and communities.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="membership.html">Premium</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="safety.html">Safety Tips</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Golden Bond. Made with ❤️ for finding love.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/themes.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

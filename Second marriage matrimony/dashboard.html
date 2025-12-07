@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Golden Bond | Find Your Perfect Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="theme-indian">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">💍</span>
+          <span class="logo-text">Golden<span class="accent">Bond</span></span>
+        </a>
+        
+        <ul class="nav-links">
+          <li><a href="index.html" data-translate="nav_home">Home</a></li>
+          <li><a href="search.html" data-translate="nav_search">Search</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="membership.html">Premium ✨</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+          <div class="language-selector">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+              <option value="en">🇺🇸 English</option>
+              <option value="hi">🇮🇳 हिंदी</option>
+              <option value="ta">🇮🇳 தமிழ்</option>
+            </select>
+          </div>
+          
+          <div class="theme-selector">
+            <select id="themeSelect" onchange="changeTheme(this.value)">
+              <option value="indian">🔴 Indian Red & Gold</option>
+              <option value="classic">⚪ Classic White</option>
+              <option value="pastel">🌸 Modern Pastel</option>
+              <option value="dark">🌙 Dark Mode</option>
+            </select>
+          </div>
+          
+          <div class="user-menu">
+            <button class="user-avatar-btn">
+              <span class="user-avatar">👤</span>
+              <span class="user-name">Rahul</span>
+            </button>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Page -->
+  <main class="dashboard-page">
+    <div class="container">
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="welcome-content">
+          <h1>Welcome back, Rahul! 👋</h1>
+          <p>You have <strong>12 new matches</strong> and <strong>5 profile views</strong> this week.</p>
+          <div class="welcome-actions">
+            <a href="search.html" class="btn btn-primary">Find Matches</a>
+            <a href="profile.html" class="btn btn-secondary">Edit Profile</a>
+          </div>
+        </div>
+        <div class="welcome-stats">
+          <div class="stat-card">
+            <span class="stat-icon">👀</span>
+            <span class="stat-value">47</span>
+            <span class="stat-label">Profile Views</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">💝</span>
+            <span class="stat-value">23</span>
+            <span class="stat-label">Interests</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🤝</span>
+            <span class="stat-value">8</span>
+            <span class="stat-label">Matches</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Completion -->
+      <div class="profile-completion-card">
+        <div class="pc-header">
+          <h3>📊 Profile Completion</h3>
+          <span class="pc-percentage">75%</span>
+        </div>
+        <div class="pc-progress">
+          <div class="pc-bar" style="width: 75%;"></div>
+        </div>
+        <p class="pc-text">Complete your profile to get 3x more matches!</p>
+        <div class="pc-items">
+          <div class="pc-item completed">
+            <span class="pc-check">✓</span>
+            <span>Basic Information</span>
+          </div>
+          <div class="pc-item completed">
+            <span class="pc-check">✓</span>
+            <span>Religion & Community</span>
+          </div>
+          <div class="pc-item completed">
+            <span class="pc-check">✓</span>
+            <span>Location & Languages</span>
+          </div>
+          <div class="pc-item pending">
+            <span class="pc-check">○</span>
+            <span>Upload Photos</span>
+            <a href="profile.html#photos" class="pc-action">Add →</a>
+          </div>
+          <div class="pc-item pending">
+            <span class="pc-check">○</span>
+            <span>Verify Profile</span>
+            <a href="profile.html#verify" class="pc-action">Verify →</a>
+          </div>
+          <div class="pc-item pending">
+            <span class="pc-check">○</span>
+            <span>Partner Preferences</span>
+            <a href="profile.html#preferences" class="pc-action">Set →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Recommended Matches -->
+      <section class="dashboard-section">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">🤖 AI-Recommended Matches</h2>
+            <p class="section-desc">Handpicked profiles based on your preferences and compatibility</p>
+          </div>
+          <a href="search.html" class="view-all-link">View All →</a>
+        </div>
+        
+        <div class="ai-matches-grid">
+          <!-- Match Card 1 - High Compatibility -->
+          <div class="ai-match-card">
+            <div class="match-score-badge premium">
+              <span class="score">94%</span>
+              <span class="label">Match</span>
+            </div>
+            <div class="match-photo">
+              <span class="avatar-emoji">👩</span>
+              <span class="verified-badge">✓</span>
+            </div>
+            <div class="match-info">
+              <h3 class="match-name">Priya Sharma</h3>
+              <p class="match-details">28 • Mumbai, India</p>
+              <p class="match-profession">Software Engineer at Google</p>
+              <div class="match-tags">
+                <span class="tag">Hindu</span>
+                <span class="tag">Brahmin</span>
+                <span class="tag">Never Married</span>
+              </div>
+            </div>
+            <div class="compatibility-breakdown">
+              <div class="compat-item">
+                <span class="compat-label">Religion</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 100%;"></div></div>
+                <span class="compat-value">100%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Education</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 95%;"></div></div>
+                <span class="compat-value">95%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Location</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 90%;"></div></div>
+                <span class="compat-value">90%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Lifestyle</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 88%;"></div></div>
+                <span class="compat-value">88%</span>
+              </div>
+            </div>
+            <div class="match-actions">
+              <button class="btn btn-secondary" onclick="viewProfile(1)">View Profile</button>
+              <button class="btn btn-primary" onclick="sendInterest(1)">💝 Interest</button>
+            </div>
+          </div>
+
+          <!-- Match Card 2 -->
+          <div class="ai-match-card">
+            <div class="match-score-badge">
+              <span class="score">91%</span>
+              <span class="label">Match</span>
+            </div>
+            <div class="match-photo">
+              <span class="avatar-emoji">👩</span>
+              <span class="verified-badge">✓</span>
+            </div>
+            <div class="match-info">
+              <h3 class="match-name">Ananya Reddy</h3>
+              <p class="match-details">26 • Bangalore, India</p>
+              <p class="match-profession">Doctor at Apollo Hospital</p>
+              <div class="match-tags">
+                <span class="tag">Hindu</span>
+                <span class="tag">Reddy</span>
+                <span class="tag">Never Married</span>
+              </div>
+            </div>
+            <div class="compatibility-breakdown">
+              <div class="compat-item">
+                <span class="compat-label">Religion</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 100%;"></div></div>
+                <span class="compat-value">100%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Education</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 92%;"></div></div>
+                <span class="compat-value">92%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Location</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 85%;"></div></div>
+                <span class="compat-value">85%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Lifestyle</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 90%;"></div></div>
+                <span class="compat-value">90%</span>
+              </div>
+            </div>
+            <div class="match-actions">
+              <button class="btn btn-secondary" onclick="viewProfile(7)">View Profile</button>
+              <button class="btn btn-primary" onclick="sendInterest(7)">💝 Interest</button>
+            </div>
+          </div>
+
+          <!-- Match Card 3 - Premium Locked -->
+          <div class="ai-match-card">
+            <div class="match-score-badge">
+              <span class="score">89%</span>
+              <span class="label">Match</span>
+            </div>
+            <div class="match-photo blurred">
+              <span class="avatar-emoji">👩</span>
+              <div class="premium-overlay">
+                <span>🔒</span>
+                <p>Premium</p>
+              </div>
+            </div>
+            <div class="match-info">
+              <h3 class="match-name">Sarah J.</h3>
+              <p class="match-details">29 • London, UK</p>
+              <p class="match-profession">Investment Banker</p>
+              <div class="match-tags">
+                <span class="tag">Christian</span>
+                <span class="tag">Catholic</span>
+                <span class="tag">Never Married</span>
+              </div>
+            </div>
+            <div class="compatibility-breakdown">
+              <div class="compat-item">
+                <span class="compat-label">Religion</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 75%;"></div></div>
+                <span class="compat-value">75%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Education</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 98%;"></div></div>
+                <span class="compat-value">98%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Location</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 70%;"></div></div>
+                <span class="compat-value">70%</span>
+              </div>
+              <div class="compat-item">
+                <span class="compat-label">Lifestyle</span>
+                <div class="compat-bar"><div class="compat-fill" style="width: 95%;"></div></div>
+                <span class="compat-value">95%</span>
+              </div>
+            </div>
+            <div class="match-actions">
+              <a href="membership.html" class="btn btn-primary" style="width: 100%;">👑 Upgrade to View</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="dashboard-section">
+        <h2 class="section-title">⚡ Quick Actions</h2>
+        <div class="quick-actions-grid">
+          <a href="search.html" class="quick-action-card">
+            <span class="qa-icon">🔍</span>
+            <span class="qa-title">Search Profiles</span>
+            <span class="qa-desc">Find your match</span>
+          </a>
+          <a href="profile.html" class="quick-action-card">
+            <span class="qa-icon">✏️</span>
+            <span class="qa-title">Edit Profile</span>
+            <span class="qa-desc">Update your info</span>
+          </a>
+          <a href="messages.html" class="quick-action-card">
+            <span class="qa-icon">💬</span>
+            <span class="qa-title">Messages</span>
+            <span class="qa-desc">3 unread</span>
+          </a>
+          <a href="membership.html" class="quick-action-card premium-card">
+            <span class="qa-icon">👑</span>
+            <span class="qa-title">Go Premium</span>
+            <span class="qa-desc">Unlock all features</span>
+          </a>
+          <button class="quick-action-card" onclick="openAIAssistant()">
+            <span class="qa-icon">🤖</span>
+            <span class="qa-title">AI Assistant</span>
+            <span class="qa-desc">Get help</span>
+          </button>
+          <a href="settings.html" class="quick-action-card">
+            <span class="qa-icon">⚙️</span>
+            <span class="qa-title">Settings</span>
+            <span class="qa-desc">Privacy & more</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Two Column Grid -->
+      <div class="dashboard-grid-2">
+        <!-- Recent Visitors -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>👀 Who Viewed You</h3>
+            <a href="#" class="view-all-link">See All</a>
+          </div>
+          <div class="visitors-list">
+            <div class="visitor-item">
+              <span class="visitor-avatar">👩</span>
+              <div class="visitor-info">
+                <span class="visitor-name">Meera Patel</span>
+                <span class="visitor-time">2 hours ago</span>
+              </div>
+              <button class="btn btn-sm btn-secondary">View</button>
+            </div>
+            <div class="visitor-item">
+              <span class="visitor-avatar">👩</span>
+              <div class="visitor-info">
+                <span class="visitor-name">Aisha Khan</span>
+                <span class="visitor-time">5 hours ago</span>
+              </div>
+              <button class="btn btn-sm btn-secondary">View</button>
+            </div>
+            <div class="visitor-item blurred-visitor">
+              <span class="visitor-avatar">🔒</span>
+              <div class="visitor-info">
+                <span class="visitor-name">Premium Only</span>
+                <span class="visitor-time">Yesterday</span>
+              </div>
+              <a href="membership.html" class="btn btn-sm btn-primary">Unlock</a>
+            </div>
+            <div class="visitor-item blurred-visitor">
+              <span class="visitor-avatar">🔒</span>
+              <div class="visitor-info">
+                <span class="visitor-name">Premium Only</span>
+                <span class="visitor-time">2 days ago</span>
+              </div>
+              <a href="membership.html" class="btn btn-sm btn-primary">Unlock</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>🔔 Notifications</h3>
+            <a href="#" class="view-all-link">Mark All Read</a>
+          </div>
+          <div class="notifications-list">
+            <div class="notification-item unread">
+              <span class="notif-icon">💝</span>
+              <div class="notif-content">
+                <p><strong>Priya Sharma</strong> accepted your interest!</p>
+                <span class="notif-time">1 hour ago</span>
+              </div>
+            </div>
+            <div class="notification-item unread">
+              <span class="notif-icon">👀</span>
+              <div class="notif-content">
+                <p><strong>5 new people</strong> viewed your profile today</p>
+                <span class="notif-time">3 hours ago</span>
+              </div>
+            </div>
+            <div class="notification-item">
+              <span class="notif-icon">🤖</span>
+              <div class="notif-content">
+                <p>AI found <strong>3 new matches</strong> for you</p>
+                <span class="notif-time">Yesterday</span>
+              </div>
+            </div>
+            <div class="notification-item">
+              <span class="notif-icon">✅</span>
+              <div class="notif-content">
+                <p>Your profile is now <strong>verified</strong>!</p>
+                <span class="notif-time">2 days ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- AI Assistant FAB -->
+  <button class="ai-assistant-fab" onclick="openAIAssistant()">
+    <span class="fab-icon">🤖</span>
+    <span class="fab-text">AI Assistant</span>
+  </button>
+
+  <!-- AI Assistant Modal -->
+  <div id="aiAssistantModal" class="ai-assistant-modal">
+    <div class="ai-modal-header">
+      <h3>🤖 Golden Bond AI Assistant</h3>
+      <button class="close-modal" onclick="closeAIAssistant()">×</button>
+    </div>
+    <div id="aiChatContainer" class="ai-chat-container">
+      <div class="ai-message bot">
+        <span class="ai-avatar">🤖</span>
+        <div class="ai-bubble">
+          <p>Hi Rahul! 👋 I'm your AI matchmaking assistant. I can help you:</p>
+          <ul>
+            <li>Find compatible matches</li>
+            <li>Improve your profile</li>
+            <li>Understand compatibility scores</li>
+            <li>Answer any questions</li>
+          </ul>
+          <p><em>How can I help you today?</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="ai-quick-prompts">
+      <button onclick="askAI('Find me Hindu matches in India')">🔍 Find matches</button>
+      <button onclick="askAI('How can I improve my profile?')">📝 Improve profile</button>
+      <button onclick="askAI('Explain compatibility score')">📊 Compatibility</button>
+      <button onclick="askAI('What are premium benefits?')">👑 Premium</button>
+    </div>
+    <div class="ai-input-container">
+      <input type="text" id="aiInput" placeholder="Type your question..." onkeypress="handleAIInput(event)">
+      <button class="ai-send-btn" onclick="sendAIMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">💍</span>
+            <span class="logo-text">Golden<span class="accent">Bond</span></span>
+          </a>
+          <p>Finding love across borders, cultures, and communities. Your perfect match awaits.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="membership.html">Premium</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="safety.html">Safety Tips</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Golden Bond. Made with ❤️ for finding love.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/themes.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
