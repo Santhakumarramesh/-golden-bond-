@@ -105,7 +105,7 @@ const translations = {
     terms_of_service: "Terms of Service",
     cookie_policy: "Cookie Policy",
     community_guidelines: "Community Guidelines",
-    copyright: "© 2025 Golden Bond. All rights reserved. Made with ❤️ for everyone seeking love.",
+    copyright: "© 2025 Golden Bond. All rights reserved. Made with 💕💍❤️ for everyone seeking love.",
     
     // Search Page
     search_title: "Find Your Match",

@@ -411,6 +411,16 @@ select.form-control {
   75% { transform: translate(15px, 15px) scale(1.02); }
 }
 
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 107, 157, 0); }
+}
+
 /* ========== Header ========== */
 .main-header {
   position: fixed;
@@ -639,6 +649,10 @@ select.form-control {
 }
 
 .hero-card {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  animation: floatCard 6s ease-in-out infinite;
   position: absolute;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -712,6 +726,8 @@ select.form-control {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-full);
   margin-left: var(--space-sm);
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 2px 10px rgba(196, 30, 58, 0.3);
 }
 
 /* ========== Quick Search Section ========== */

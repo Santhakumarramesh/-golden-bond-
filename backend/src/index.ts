@@ -4,9 +4,22 @@
  */
 
 import express from 'express';
-import cors from 'cors';
-import rateLimit from 'express-rate-limit';
-import { PORT, FRONTEND_URL, RATE_LIMIT_WINDOW_MS, RATE_LIMIT_MAX_REQUESTS, IS_PRODUCTION } from './config';
+import session from 'express-session';
+import { PORT, FRONTEND_URL, IS_PRODUCTION } from './config';
+
+// Import security middleware
+import {
+  securityHeaders,
+  apiLimiter,
+  authLimiter,
+  paymentLimiter,
+  registerLimiter,
+  corsOptions,
+  securityLogger,
+  validateQueryParams,
+  jsonSizeLimit,
+  sessionConfig,
+} from './middleware/security';
 
 // Import routes
 import authRoutes from './routes/auth';
@@ -21,30 +34,38 @@ import paymentsRoutes from './routes/payments';
 const app = express();
 
 // ===========================================
-// MIDDLEWARE
+// SECURITY MIDDLEWARE (Applied First)
 // ===========================================
 
-// CORS
-app.use(cors({
-  origin: IS_PRODUCTION ? FRONTEND_URL : '*',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// 1. Security headers (Helmet)
+app.use(securityHeaders);
 
-// Body parsing
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
+// 2. Trust proxy (for rate limiting behind proxy)
+app.set('trust proxy', 1);
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: RATE_LIMIT_WINDOW_MS,
-  max: RATE_LIMIT_MAX_REQUESTS,
-  message: { error: 'Too many requests, please try again later.' },
-  standardHeaders: true,
-  legacyHeaders: false
-});
-app.use('/api/', limiter);
+// 3. CORS with strict configuration
+import cors from 'cors';
+app.use(cors(corsOptions));
+
+// 4. Session management
+app.use(session(sessionConfig));
+
+// 5. Security logging (detect suspicious activity)
+app.use(securityLogger);
+
+// 6. Query parameter validation (SQL injection protection)
+app.use(validateQueryParams);
+
+// 7. Body parsing with size limits
+app.use(express.json({ limit: '10mb', strict: true }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(jsonSizeLimit('10mb'));
+
+// 8. Rate limiting by endpoint
+app.use('/api/', apiLimiter);
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', registerLimiter);
+app.use('/api/payments', paymentLimiter);
 
 // Request logging (development)
 if (!IS_PRODUCTION) {
